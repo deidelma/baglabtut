@@ -162,3 +162,8 @@ cython_debug/
 *.gz
 data/filtered_gene_bc_matrices/hg19/
 crap.*
+data/barcodes.tsv
+data/features.tsv
+data/matrix.mtx
+*.rds
+.virtual_documents/
