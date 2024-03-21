@@ -6,7 +6,6 @@ import sys
 import tarfile
 import shutil
 import gzip
-from rdsad import seurat
 
 
 def download_pbmc_matrices(url: str, fname: PathLike| str) -> None:
