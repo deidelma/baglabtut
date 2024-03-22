@@ -105,6 +105,8 @@ def read_10x_data(data_dir: Path) -> tuple[coo_matrix, pd.DataFrame, pd.DataFram
     mtx = scipy.io.mmread(data_dir / Path("matrix.mtx"))
     barcodes = pd.read_csv(data_dir / Path("barcodes.tsv"), header=None, sep="\t")
     features = pd.read_csv(data_dir / Path("features.tsv"), header=None, sep="\t")
+    # if len(features.columns) > 1:
+    #     features = pd.DataFrame(features.iloc[:, 1])
     return coo_matrix(mtx), barcodes, features
 
 
@@ -115,9 +117,11 @@ def create_adata(
     adata.obs = barcodes
     adata.obs_names = barcodes[0]  # type:ignore
     adata.obs.drop(adata.obs[[0]], axis=1, inplace=True)  # type: ignore
-    adata.var = features
-    adata.var_names = features[0]  # type:ignore
-    adata.var.drop(adata.var[[0]], axis=1, inplace=True)  # type: ignore
+    # adata.var = features
+    print(adata.var.head(10))
+    print(len(adata.var.columns))
+    # adata.var_names = features[0]  # type:ignore
+    # adata.var.drop(adata.var[[0]], axis=1, inplace=True)  # type: ignore
     return adata
 
 

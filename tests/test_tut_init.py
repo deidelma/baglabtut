@@ -1,6 +1,10 @@
 import tempfile
 from pathlib import Path
+import anndata
+import pandas as pd
+
 import tut_init
+from rdsad import read_10x_data, create_adata
 
 
 def test_download_pbmc_matrices():
@@ -19,7 +23,12 @@ def test_install_pbmc_matrices():
         tut_init.install_pbmc_matrices(folder=dir_name)
         out_path = Path(dir_name) / "filtered_gene_bc_matrices/hg19"
         assert (out_path / Path("barcodes.tsv")).exists()
-        
-        
 
-        
+
+def test_read_10x_data() -> None:
+    mtx, barcodes, features = read_10x_data(Path("data"))
+    assert isinstance(features, pd.DataFrame)
+    adata = create_adata(mtx, barcodes=barcodes, features=features)
+    assert adata is not None
+    assert isinstance(adata, anndata.AnnData)
+    adata.write_h5ad(Path("data/pbmc.h5ad"))
