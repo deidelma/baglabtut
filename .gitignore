@@ -168,3 +168,4 @@ data/matrix.mtx
 *.rds
 .virtual_documents/
 cache/data-filtered_gene_bc_matrices-hg19-matrix.h5ad
+cache/

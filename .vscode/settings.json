@@ -7,9 +7,17 @@
     "cSpell.words": [
         "adata",
         "anndata",
+        "baglab",
         "barcodes",
+        "dplyr",
+        "igraph",
+        "jupyterlab",
+        "leidenalg",
+        "openpyxl",
         "pbmc",
         "rdsad",
+        "scanpy",
+        "tidyverse",
         "tqdm"
     ]
 }
