@@ -17,6 +17,7 @@
         "pbmc",
         "rdsad",
         "scanpy",
+        "scikit",
         "tidyverse",
         "tqdm"
     ]

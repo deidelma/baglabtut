@@ -165,6 +165,7 @@ crap.*
 data/barcodes.tsv
 data/features.tsv
 data/matrix.mtx
+data/
 *.rds
 .virtual_documents/
 cache/data-filtered_gene_bc_matrices-hg19-matrix.h5ad
