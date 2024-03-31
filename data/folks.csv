@@ -1,5 +1,5 @@
-﻿Name,Occupation,Sex,Age,Weight,Income
-Ted,Tinker,Male,33,70,50000
-Carol,Tailor,Female,27,50,60000
-Alice,Soldier,Female,48,60,70000
-Bob,Spy,Male,61,80,55000
+First Name,Last Name,Occupation,Sex,Age,Weight,Income
+Ted,Turner,Tinker,Male,33,70,50000
+Carol,King,Tailor,Female,27,50,60000
+Alice,Toklas,Soldier,Female,48,60,70000
+Bob,Barker,Spy,Male,61,80,55000
