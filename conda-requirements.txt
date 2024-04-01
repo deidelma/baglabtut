@@ -1,0 +1,7 @@
+python
+jupyter
+scanpy
+scikit-image
+pooch
+igraph
+openpyxl

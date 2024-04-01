@@ -6,7 +6,7 @@ This directory contains the files for tutorials held on April 3 and 10, 2024 in 
 
 **Advisors**: Nicole Heimbach, Emily Wilson
 
-**Last Updated**: March 25, 2024
+**Last Updated**: April 1, 2024
 
 ## Clone the files we will use for the tutorial
 
@@ -20,24 +20,59 @@ This will create a directory called `baglabtut`.  Use `cd` to enter the director
 ```bash
 cd baglabtut
 ```
+
+There is also a zip file on the SharePoint site under "coding tutorial".  After you unzip the file, it will create a
+directory with the same information as the one above.  Use `cd` to enter the directory:
+```bash
+cd baglabtut
+```
+
 ## Install the tutorial environment
 
-Once you are in the directory, use the conda program (or micromamba if you installed that instead) to issue the following command:
+The goal is to give you the skills you need to complete the current [scanpy tutorial](https://scanpy.readthedocs.io/en/stable/tutorials/basics/clustering.html) on processing and clustering single cell RNA data.
+
+
+To complete the exercises in this tutorial and to be able to complete the processing and clustering tutorial on the scanpy site, you need to install a number of prerequisites.  Here are a set of commands that should work:
+
+```bash
+conda create -n baglab -c conda-forge python jupyter scanpy scikit-image pooch igraph openpyxl -y
+```
+or, if you installed micromamba:
+
+```bash
+micromamba create -n baglab -c conda-forge python jupyter scanpy scikit-image pooch igraph openpyxl -y
+```
+**Note:** the name `baglab` is arbitrary.  You may choose any name you like.
+
+## An easier way
+
+To help make things simpler, you can make use of the file "conda-requirements.txt" as follows:
+
+```bash
+conda create --name baglab --file conda-requirements.txt -c conda-forge -y
+```
+
+## Legacy workflow
+
+If you want to complete the legacy workflow tutorial from 2017, you will need to instal specific versions of scanpy and other packages.  Unfortunately, these are not available on conda-forge.  The file `baglab.yml` has been created to allow you to create an an environment that works with the legacy code.  To install this, once you are in the directory, use the conda program (or micromamba if you installed that instead) to issue the following command :
+
+*Note:* The command is different than that used above. It is `conda env create` not `conda create`.
 
 ```bash
 conda env create -f baglab.yml
 ```
 or
+
 ```bash
 micromamba env create -f baglab.yml
 ```
-The file `baglab.yml` contains the instructions to create an environment that can run the current version of the the [scanpy cluster analysis tutorial](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html).  Once you have created the environment, which can take a few minutes, you should be ready to activate it.
+The file `baglab.yml` contains the instructions to create an environment that can run the legacy version of the the [scanpy cluster analysis tutorial](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html).  
 
 
 ## Activate the tutorial environment
+Once you have created the environment, which can take a few minutes, you should be ready to activate it. Activation is necessary to provide a complete and consistent set of libraries.
 
-You must activate it to have access to a consistent set of libaries.
-To activate the environment, you need to use the following command:
+To activate the environment, you need to use the following command using the name you chose for the given environment (e.g. `baglab`):
 
 ```bash
 conda activate baglab
@@ -46,6 +81,7 @@ or
 ```bash
 micromamba activate baglab
 ```
+
 Once the environment is activated, the command line prompt will have the prefix: `(baglab)`.
 
 To deactivate the environment, you can use:
