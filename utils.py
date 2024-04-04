@@ -60,6 +60,19 @@ def bag_gzip(file_name: PathLike | str) -> None:
 def bag_extract(
     file_name: PathLike | str, output_dir: PathLike | str | None = None
 ) -> None:
+    """
+    bag_extract takes the path to a compressed tar file and extracts it in the provided directory.
+
+    This function assumes that the input file is in 'tape archive' format, created by the
+    'tar' progam.
+
+    If the file ends in the suffix ".tar", it is assumed to be uncompressed.
+    If the file ends in the suffix ".gz", it is assumed to be gzip compressed.
+
+    Args:
+        file_name (PathLike | str): The path to the file (e.g., 'data/pbmc.tar.gz')
+        output_dir (PathLike | str | None, optional): If provided, this directory will be used for output. Defaults to directory of the input file.
+    """
     file_path = Path(file_name)
     if not file_path.exists():
         print(f"Unable to locate: '{file_name}'.", file=sys.stderr)
@@ -74,7 +87,15 @@ def bag_extract(
         return
 
     try:
-        tar = tarfile.open(file_path, mode="r:gz")
+        if file_path.suffix == ".gz":
+            tar = tarfile.open(file_path, mode="r:gz")
+        elif file_path.suffix == ".tar":
+            tar = tarfile.open(name=file_path, mode="r")
+        else:
+            raise IOError(
+                f"unable to read file: %s, not in tar or gz format"
+                % (file_path.as_posix(),)
+            )
         tar.extractall(filter="tar", path=output_path)
     except Exception as e:
         print(f"Unable to extract contents of {file_name}.", file=sys.stderr)
