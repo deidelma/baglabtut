@@ -5,13 +5,14 @@ useful functions
 
 """
 
-from os import PathLike
-import shutil
-from pathlib import Path
-import sys
-import requests
 import gzip
+import shutil
+import sys
 import tarfile
+from os import PathLike
+from pathlib import Path
+
+import requests
 
 
 def bag_wget(uri: str, output_file: PathLike | str, overwrite=True) -> None:
@@ -93,7 +94,7 @@ def bag_extract(
             tar = tarfile.open(name=file_path, mode="r")
         else:
             raise IOError(
-                f"unable to read file: %s, not in tar or gz format"
+                "unable to read file: %s, not in tar or gz format"
                 % (file_path.as_posix(),)
             )
         tar.extractall(filter="tar", path=output_path)

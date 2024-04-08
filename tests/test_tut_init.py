@@ -1,10 +1,10 @@
 import tempfile
 from pathlib import Path
+
 import anndata
 import pandas as pd
-
 import tut_init
-from rdsad import read_10x_data, create_adata
+from rdsad import create_adata, read_10x_data
 
 
 def test_download_pbmc_matrices():
